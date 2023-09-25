@@ -17,6 +17,7 @@ public class Ex002 {
 
         Character answer = firstNonRepeatedChar(str);
         System.out.println(answer);
+        System.out.println("modifed from ubuntu");
     }
 
     private static Character firstNonRepeatedChar(String paramStr) {
