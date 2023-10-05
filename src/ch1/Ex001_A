@@ -33,7 +33,7 @@ public class Ex001_A {
         // chars() : 주어진 문자열을 IntStream으로 변환(각 문자가 유니코드 포인트로 변환됨)
         // mapToObj(c -> (char) c) : IntStream에서 char타입의 스트림으로 매핑
         // 즉, 유니코드 포인트를 char 형태로 형변환하여 각 문자를 나타내도록 스트림 생성
-        // .collect(Collectors.groupingBy(c -> c, Collectors.counting())) 
+        // .collect(Collectors.groupingBy(c -> c, Collectors.counting())) , *counting() 기본 반환 타입이 Long
         // : 각문자를 그룹화하고 각 그룹의 크기(빈도)를 계산하여 Map<Character, Long>으로 집계
     }
 }
