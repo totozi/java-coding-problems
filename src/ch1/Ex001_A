@@ -1,0 +1,39 @@
+package ch1;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class Ex001_A {
+
+    public static void main(String[] args) {
+        
+    }
+
+    private Map<Character, Integer> countDuplicateCharacters(String str) {
+        Map<Character, Integer> result = new HashMap<>();
+
+        for( int i = 0 ; i<str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // 람다 사용
+            result.compute(ch, (k, v) -> (v == null) ? 1 : ++v);
+            // result의 키 값(k)에 ch로 넣은 걸 찾아서 v의 값이 null 인지 확인해라
+        }
+
+        return result;
+    }
+
+    private Map<Character, Long> countDuplicateCharacters2(String str) {
+        Map<Character, Long> result = str.chars()
+        .mapToObj(c -> (char) c)
+        .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+
+        // chars() : 주어진 문자열을 IntStream으로 변환(각 문자가 유니코드 포인트로 변환됨)
+        // mapToObj(c -> (char) c) : IntStream에서 char타입의 스트림으로 매핑
+        // 즉, 유니코드 포인트를 char 형태로 형변환하여 각 문자를 나타내도록 스트림 생성
+        // .collect(Collectors.groupingBy(c -> c, Collectors.counting())) 
+        // : 각문자를 그룹화하고 각 그룹의 크기(빈도)를 계산하여 Map<Character, Long>으로 집계
+    }
+}
